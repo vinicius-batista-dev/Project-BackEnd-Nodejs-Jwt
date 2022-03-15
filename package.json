@@ -1,0 +1,26 @@
+{
+  "name": "System-Login",
+  "version": "1.0.0",
+  "description": "Do you need a system that has registration and login and that encrypts the user's password when saved in the bank ?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinicius-batista-dev/System-Login.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinicius-batista-dev/System-Login/issues"
+  },
+  "homepage": "https://github.com/vinicius-batista-dev/System-Login#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "knex": "^1.0.4",
+    "mysql2": "^2.3.3"
+  }
+}

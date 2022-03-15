@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "seyyedkhandon.tpack",
+        "naumovs.color-highlight",
+        "mikestead.dotenv",
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint",
+        "graphql.vscode-graphql",
+        "pkief.material-icon-theme",
+        "rocketseat.rocketseatreactjs"
+    ]
+}
