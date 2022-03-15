@@ -6,6 +6,5 @@
 
     - Register JWT Password
     - Login
-    - keep product
-    - pick up product
   
+ 
