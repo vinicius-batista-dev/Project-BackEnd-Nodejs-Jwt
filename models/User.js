@@ -29,6 +29,44 @@ class User {
         }
     }
 
+    async update(id, email, name, role){
+        var user = await this.findById(id);
+
+        if(user != undefined){
+            var editarUsuario = {};
+
+            if(email != undefined){
+                if(email != user.email){
+                    var resultado = await this.findEmail(email);
+
+                    if(resultado == false){
+                        editarUsuario.email = email;
+                    }else{
+                        return {status: false, err: "O email ja esta cadastrado."}
+                    }
+                }
+            }
+
+            if(name != undefined){
+                editarUsuario.name = name;
+            }
+
+            if(role != undefined){
+                editarUsuario.role = role;
+            }
+            try{
+                await knex.update(editarUsuario).where({id: id}).table("users");
+                return {status: true}
+            }catch(err){
+                return {status: false, err: err}
+            }
+
+
+        }else{
+            return {status: false, err: "O usuario nao existe."}
+        }
+    }
+
     async new(email, password, name){
         try{
             //10 numero criptografia
@@ -58,6 +96,8 @@ class User {
             return false;
         }
     }
+
+    
 }
 
 module.exports = new User();
