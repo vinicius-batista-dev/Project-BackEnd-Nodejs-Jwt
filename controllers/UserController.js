@@ -7,7 +7,16 @@ class UserController{
     }
 
     async findUser(req, res){
-        var id = req.params.
+        var id = req.params.id;
+        var user = await User.findById(id);
+
+        if(user == undefined){
+            res.status(404);
+            res.send({});
+        }else{
+            res.status(200);
+            res.json(user);
+        }
     }
 
     async create(req, res){
