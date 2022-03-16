@@ -22,6 +22,7 @@
 
 #### create user function
 
+  <p>This function will create the user</p>
 
     async create(req, res){
           var {email, name, password} = req.body;
@@ -41,6 +42,8 @@
 
   
 #### Find Email function
+
+  <p>This function will find the Email</p>
 
 
     async findEmail(email){
