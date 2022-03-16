@@ -13,7 +13,13 @@ class UserController{
             return;
         }
 
-        await User.findEmail(email);
+        var emailExistir = await User.findEmail(email);
+
+        if(emailExistir){
+            res.status(406);
+            res.json({err: "O email ja esta cadastrado!"})
+            return;
+        }
         
         await User.new(email, password, name);
 
