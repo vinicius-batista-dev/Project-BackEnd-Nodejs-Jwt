@@ -11,11 +11,17 @@
 
   - Email is invalid.
 
-## Install package bcrypt
+## Install package npm install
 
-  - npm install bcrypt
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "knex": "^1.0.4",
+    "mysql2": "^2.3.3"
+
 
 ## create user function
+
 
     async create(req, res){
           var {email, name, password} = req.body;
