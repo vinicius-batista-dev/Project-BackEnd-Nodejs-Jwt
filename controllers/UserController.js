@@ -1,3 +1,5 @@
+var User = require('../models/User');
+
 class UserController{
     async index(req, res){}
 
@@ -5,12 +7,16 @@ class UserController{
         var {email, name, password} = req.body;
 
         //Validando o Email
-
         if(email == undefined){
             res.status(403);
             res.json({err: "O email é invalido."})
+            return;
         }
-        res.send("Pegando o corpo da requisicao.")
+        
+        await User.new(email, password, name);
+
+        res.status(200);
+        res.send("Tudo Ok");
     }
 }
 

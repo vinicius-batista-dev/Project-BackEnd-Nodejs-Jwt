@@ -7,9 +7,13 @@
     - Register JWT Password
     - Login
 
-## Retornando um status 403
+## Returning a 403 status
 
   - Email is invalid.
+
+## Install package bcrypt
+
+  - npm install bcrypt
 
   
  
