@@ -12,6 +12,8 @@ class UserController{
             res.json({err: "O email é invalido."})
             return;
         }
+
+        await User.findEmail(email);
         
         await User.new(email, password, name);
 
