@@ -7,11 +7,11 @@
     - Register JWT Password
     - Login
 
-## Returning a 403 status
+#### Returning a 403 status
 
   - Email is invalid.
 
-## Install package npm install
+#### Install package npm install
 
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.2",
@@ -20,7 +20,7 @@
     "mysql2": "^2.3.3"
 
 
-## create user function
+#### create user function
 
 
     async create(req, res){
@@ -37,6 +37,28 @@
 
         res.status(200);
         res.send("Tudo Ok");
+    }
+
+  
+#### Find Email function
+
+
+    async findEmail(email){
+        try{
+
+            var result = await knex.select("*").from("users").where({email: email});
+        //Procurar um email e vai retornar falso
+            
+            if(result.length > 0){
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch(err){
+            console.log(err);
+            return false;
+        }
     }
 
   
