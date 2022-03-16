@@ -7,6 +7,7 @@
         "dbaeumer.vscode-eslint",
         "graphql.vscode-graphql",
         "pkief.material-icon-theme",
-        "rocketseat.rocketseatreactjs"
+        "rocketseat.rocketseatreactjs",
+        "adpyke.codesnap"
     ]
 }
