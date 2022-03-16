@@ -19,6 +19,28 @@
     "knex": "^1.0.4",
     "mysql2": "^2.3.3"
 
+#### Edit User
+
+ <p>This function will edit the user </p>
+
+    async edit(req, res){
+        var {id, name, role, email} = req.body;
+        var resultado = await User.update(id, name, email, role);
+
+        if(resultado != undefined){
+            if(resultado.status){
+                res.status(200);
+                res.send("Tudo Ok!")  
+            }else{
+                res.status(406);
+                res.send(resultado.err);
+            }
+        }else{
+            res.status(406);
+            res.send("Ocorreu error no servidor.")
+        }
+    }
+
 
 #### create user function
 
