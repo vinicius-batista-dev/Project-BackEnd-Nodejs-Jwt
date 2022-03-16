@@ -6,5 +6,10 @@
 
     - Register JWT Password
     - Login
+
+## Retornando um status 403
+
+  - Email is invalid.
+
   
  
