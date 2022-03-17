@@ -46,16 +46,23 @@ class Produto {
                     }
                 }
             }
-
-            if(name != undefined){
-                editarUsuario.name = name;
+            if(validade != false){
+                editarProduto.validade = validade;
             }
 
-            if(role != undefined){
-                editarUsuario.role = role;
+            if(nome_produto != undefined){
+                editarProduto.nome_produto = nome_produto;
+            }
+
+            if(codigo_barras != undefined){
+                editarProduto.codigo_barras = codigo_barras;
+            }
+
+            if(roles != undefined){
+                editarProduto.roles = roles;
             }
             try{
-                await knex.update(editarUsuario).where({id: id}).table("users");
+                await knex.update(editarProduto).where({id: id}).table("produtos");
                 return {status: true}
             }catch(err){
                 return {status: false, err: err}
@@ -63,26 +70,26 @@ class Produto {
 
 
         }else{
-            return {status: false, err: "O usuario nao existe."}
+            return {status: false, err: "O produto ja existe."}
         }
     }
 
-    async new(email, password, name){
+    async new(nome_produto, codigo_barras, validade ){
         try{
 
             var hash = await bcrypt.hash(password, 10);
 
-            await knex.insert({email, password: hash, name, role: 0}).table("users");
+            await knex.insert({validade, codigo_barras: hash, nome_produto, role: 0}).table("produtos");
 
         }catch(err){
             console.log(err);
         }
     }
 
-    async findEmail(email){
+    async findEmail(nome_produto){
         try{
 
-            var result = await knex.select("*").from("users").where({email: email});
+            var result = await knex.select("*").from("produtos").where({nome_produto: nome_produto});
             
             if(result.length > 0){
                 return true;
@@ -97,17 +104,17 @@ class Produto {
     }
 
     async delete(id){
-        var user = await this.findById(id);
+        var produto = await this.findById(id);
 
-        if(user != undefined){
+        if(produto != undefined){
             try{
-                await knex.delete().where({id: id}).table("users");
+                await knex.delete().where({id: id}).table("produtos");
                 return {status: true}
             }catch(err){
                 return {status: false, err: err}
             }
         }else{
-            return {status: false, err: "O usuario nao existe, portanto nao pode ser deletado."}
+            return {status: false, err: "O produto nao existe, portanto nao pode ser deletado."}
 
         }
     }
