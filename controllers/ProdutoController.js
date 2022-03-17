@@ -1,1 +1,0 @@
-var Produto = require('../models/Produto');
