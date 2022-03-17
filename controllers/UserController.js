@@ -40,7 +40,6 @@ class UserController{
     async create(req, res){
         var {email, name, password} = req.body;
 
-        //Validando o Email
         if(email == undefined){
             res.status(403);
             res.json({err: "O email é invalido."})
@@ -67,7 +66,7 @@ class UserController{
         var resultado = await User.delete(id);
 
         if(resultado.status){
-            rest.status(200);
+            res.status(200);
             res.send("Tudo OK.")
         }else{
             res.status(406);
