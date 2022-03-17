@@ -69,7 +69,7 @@ class User {
 
     async new(email, password, name){
         try{
-            //10 numero criptografia
+
             var hash = await bcrypt.hash(password, 10);
 
             await knex.insert({email, password: hash, name, role: 0}).table("users");
@@ -83,7 +83,6 @@ class User {
         try{
 
             var result = await knex.select("*").from("users").where({email: email});
-        //Procurar um email e vai retornar falso
             
             if(result.length > 0){
                 return true;
@@ -94,6 +93,22 @@ class User {
         }catch(err){
             console.log(err);
             return false;
+        }
+    }
+
+    async delete(id){
+        var user = this.findById(id);
+
+        if(user != undefined){
+            try{
+                await knex.delete().where({id: id}).table("users");
+                return {status: true}
+            }catch(err){
+                return {status: false, err: err}
+            }
+        }else{
+            return {status: false, err: "O usuario nao existe, portanto nao pode ser deletado."}
+
         }
     }
 
