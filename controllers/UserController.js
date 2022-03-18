@@ -1,5 +1,6 @@
 var User = require('../models/User');
 var PasswordToken = require("../models/PasswordToken");
+const { default: knex } = require('knex');
 class UserController{
     async index(req, res){
         var users = await User.findAll();
@@ -85,6 +86,25 @@ class UserController{
         }else{
             res.status(406);
             res.send(resultado.err);
+        }
+    }
+
+    async validate(token){
+        try{
+           var resultado = await knex.select().where({token: token}).table("passwordtokens");
+        
+           if(resultado.length > 0){
+                var tk = resultado[0];
+
+                if(tk.used){
+                    return false;                                   
+                }    
+           }else{
+               return false;
+           }
+        }catch(err){
+            console.log(err);
+            return false;
         }
     }
 }
