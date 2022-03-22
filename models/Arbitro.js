@@ -175,3 +175,5 @@ class Juiz{
         }
     }
 }
+
+module.exports = new Arbitro();
