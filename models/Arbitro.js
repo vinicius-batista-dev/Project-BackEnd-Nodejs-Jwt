@@ -88,7 +88,7 @@ class Juiz{
         }
     }
 
-    async findPais(estado){
+    async findEstado(estado){
         try{
             var result = await knex.select(["*"]).where({estado: estado}).table("arbitro");
 
