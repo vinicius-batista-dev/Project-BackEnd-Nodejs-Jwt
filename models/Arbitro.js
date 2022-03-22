@@ -128,7 +128,7 @@ class Juiz{
         }
     }
 
-    async update(id, arbitro, partida, cidade, pais, estado, date){
+    async atualizarArbitro(id, arbitro, partida, cidade, pais, estado, date){
 
         var arbitro = await this.findById(id);
 
