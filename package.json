@@ -1,10 +1,12 @@
 {
-  "name": "System-Login",
+  "name": "login",
   "version": "1.0.0",
   "description": "Do you need a system that has registration and login and that encrypts the user's password when saved in the bank ?",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --es-module-specifier-resolution=node index.js"
+
   },
   "repository": {
     "type": "git",

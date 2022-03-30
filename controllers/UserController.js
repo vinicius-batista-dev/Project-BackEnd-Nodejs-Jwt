@@ -1,10 +1,10 @@
-var User = require("../models/User");
-var PasswordToken = require("../models/PasswordToken");
-var jwt = require("jsonwebtoken");
+let PasswordToken = require("../models/PasswordToken");
+let User = require('../models/User');
+let jwt = require("jsonwebtoken");
 
-var secret = "adsuasgdhjasgdhjdgahjsg12hj3eg12hj3g12hj3g12hj3g123";
+let secret = "adsuasgdhjasgdhjdgahjsg12hj3eg12hj3g12hj3g12hj3g123";
 
-var bcrypt = require("bcrypt");
+let bcrypt = require("bcrypt");
 
 
 class UserController{
@@ -26,7 +26,7 @@ class UserController{
     }
 
     async create(req, res){
-        var {email, name, password} = req.body;
+        let {email, name, password} = req.body;
 
         if(email == undefined){
             res.status(400);
@@ -81,14 +81,15 @@ class UserController{
     }
 
     async recoverPassword(req, res){
-        var email = req.body.email;
-        var result = await PasswordToken.create(email);
-        if(result.status){
-           res.status(200);
-           res.send("" + result.token);
+        let email = req.body.email;
+        var resultado = await PasswordToken.create(email);
+
+        if(resultado.status){
+            res.status(200);
+            res.send("" + resultado.token)
         }else{
-            res.status(406)
-            res.send(result.err);
+            res.status(406);
+            res.send(resultado.err);
         }
     }
 
@@ -106,33 +107,33 @@ class UserController{
         }
     }
 
-    async login(req, res){
-        var {email, password } = req.body;
+    // async login(req, res){
+    //     var {email, password } = req.body;
 
-        var user = await User.findByEmail(email);
+    //     var user = await User.findByEmail(email);
 
-        if(user != undefined){
+    //     if(user != undefined){
 
-            var resultado = await bcrypt.compare(password,user.password);
+    //         var resultado = await bcrypt.compare(password,user.password);
 
-            if(resultado){
+    //         if(resultado){
 
-                var token = jwt.sign({ email: user.email, role: user.role }, secret);
+    //             var token = jwt.sign({ email: user.email, role: user.role }, secret);
 
-                res.status(200);
-                res.json({token: token});
+    //             res.status(200);
+    //             res.json({token: token});
 
-            }else{
-                res.status(406);
-                res.send("Senha incorreta");
-            }
+    //         }else{
+    //             res.status(406);
+    //             res.send("Senha incorreta");
+    //         }
 
-        }else{
+    //     }else{
 
-            res.json({status: false});
+    //         res.json({status: false});
 
-        }
-    }
+    //     }
+    // }
 
 }
 

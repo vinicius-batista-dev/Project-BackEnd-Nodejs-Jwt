@@ -3,7 +3,7 @@ var express = require('express');
 const router = require('./routes/routes');
 var app = express();
 
-const PORT = 8000;
+const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
