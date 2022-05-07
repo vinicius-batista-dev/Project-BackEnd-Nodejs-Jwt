@@ -1,6 +1,6 @@
 # System-Login
 
-  Do you need a system that has registration and login and that encrypts the user's password when saved in the bank ?
+  Do you need a system that has registration and login and that encrypts the user's password when saved in the DATABASE ?
   
 ### Example Use Case
 
